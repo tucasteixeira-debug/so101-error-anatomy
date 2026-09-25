@@ -10,6 +10,30 @@ The project started from zero in most of these areas. The Formation lists record
 
 ---
 
+### 2026-09-23 to 2026-09-25 · Public repository, version control and documentation workflow
+
+**Achieved**
+- Public repository created with a documented structure: overview, progress log, and a README per folder.
+- Private working notes and tool configuration excluded from version control; exclusion verified before publishing.
+- Public objectives document written, including a researched overview of the current physical-AI landscape.
+- AI coding agent installed and configured with project instructions and an approval-gated routine for this log.
+
+**Formation — questions worked through**
+- How does a Unix shell locate executables, and when do startup-file changes take effect? (search path, symbolic links, per-shell startup files)
+- How does version control model a project's history? (working directory, staging area, commits)
+- What distinguishes a local repository from a hosted remote?
+- Why does untracking a file not remove it from history, and what can ignore rules not do?
+- How are public engineering repositories conventionally structured? (reference layouts, per-folder documentation, changelog conventions)
+- How does an AI coding agent act on a filesystem, and how is its authority bounded? (permission gating, standing instructions, skills)
+
+**Not achieved / open**
+- An early repository version included private notes in its history; the repository was rebuilt with a clean history.
+- The routine for drafting this log needed several redesigns before the first entry.
+- No hardware progress: leader arm still blocked; assembly not started.
+- Repository license not yet chosen.
+
+---
+
 ### 2026-09-19 to 2026-09-23 · Hardware bring-up: servo configuration and the communication layer
 
 **Achieved**
