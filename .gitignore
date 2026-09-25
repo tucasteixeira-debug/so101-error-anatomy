@@ -1,0 +1,27 @@
+# ---- Local-only working material (never pushed) ----
+# David's private working docs: session log, learning log, technical plan,
+# glossary, project brief.
+private/
+# Claude Code instructions and skills.
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+
+# ---- Python ----
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# ---- Heavy / generated artifacts ----
+# Datasets live on the Hugging Face Hub (LeRobot's native format), not in git.
+# LeRobot training runs write to outputs/ by default.
+outputs/
+wandb/
+*.safetensors
+*.ckpt
+*.pt
+
+# ---- Editor / OS clutter ----
+.vscode/
+.DS_Store
+*~
