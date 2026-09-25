@@ -10,6 +10,29 @@ The project started from zero in most of these areas. The Formation lists record
 
 ---
 
+### 2026-09-19 to 2026-09-23 · Hardware bring-up: servo configuration and the communication layer
+
+**Achieved**
+- Follower arm: 6/6 servos assigned unique bus IDs, configured one servo at a time.
+- Defective driver board isolated by substitution: 1 of 2 boards powered and enumerated but relayed no data.
+- Warranty claim filed for the defective board; a low-cost backup adapter identified.
+- Serial-port access configured persistently through group membership.
+
+**Formation — questions worked through**
+- How is a robotic manipulator decomposed into functional layers, and how do these map onto the error budget?
+- How do joint angles determine end-effector position? (forward kinematics, at the intuition level)
+- How is information physically transmitted between a computer and a peripheral? (UART bit timing, baud rate, USB differential signalling)
+- How does a motor command become bytes on a shared servo bus? (packet structure, device IDs, registers, checksum)
+- How does the Linux kernel expose a hardware device to user programs? (character devices, major/minor numbers, udev)
+- How does a Unix shell resolve variables, programs and access rights? (environment variables, search path, permissions, groups)
+
+**Not achieved / open**
+- Leader arm not configured; blocked on a second working driver board.
+- A hand-written diagnostic script briefly mimicked a hardware fault; the cause was a silently caught software error.
+- Physical assembly and calibration not started.
+
+---
+
 ### 2026-09-12 · Project planning and development environment setup
 
 **Achieved**
