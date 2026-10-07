@@ -13,15 +13,29 @@ The project started from zero in most of these areas. The Formation lists record
 ### 2026-10-06 to 2026-10-07 · First simulations: single-joint dynamics and a 6-joint pose sequence
 
 **Achieved**
+
+> [!IMPORTANT]
+> **Milestones**
+> - **First simulation commanding all 6 SO-101 joints together**, recorded and plotted per joint (commanded vs. actual).
+> - **First choreographed motion:** 7 poses (ready, reach, grasp, lift with wrist roll, reach, release, home), no floor contact, largest arm-joint tracking gap 0.013 rad.
+
 - First hand-written simulation model: a one-joint pendulum stepped from Python (simulated swing period ≈ 1.2 s).
 - SO-101 model inspected from Python: 8 bodies, 6 joints, 6 position actuators, 31 geometry elements.
 - Simulated 0.5 rad step on one joint: overshoot to 0.627 rad, settled by ≈ 0.43 s, 0.0007 rad residual offset.
 - Tracking error vs. move duration (0.5 rad move): largest gap 0.0047, 0.023, 0.33 rad at 2.0, 0.5, 0.1 s.
-- First choreographed motion: all 6 joints through 7 poses, no floor contact, largest arm-joint gap 0.013 rad.
 - Simulation only; motor parameters are borrowed from another robot model, so control error must come from the real arm.
 
-![Simulation of the public SO-101 model moving all 6 joints through a 7-pose sequence](docs/media/ex4_pose_sequence.gif)
-![Commanded vs. actual angle for each of the 6 joints during the simulated pose sequence](docs/media/ex4_pose_sequence.png)
+<p align="center">
+  <img src="docs/media/ex4_pose_sequence.gif" width="480" alt="Simulation of the public SO-101 model moving all 6 joints through a 7-pose sequence">
+  <br>
+  <em><b>Figure 1.</b> Simulated 7-pose sequence on the public SO-101 MuJoCo model: ready → reach right (gripper opens) → grasp → lift with wrist roll → reach left → release → home. Linear interpolation of joint targets at 50 Hz.</em>
+</p>
+
+<p align="center">
+  <img src="docs/media/ex4_pose_sequence.png" width="720" alt="Commanded vs. actual angle for each of the 6 joints during the simulated pose sequence">
+  <br>
+  <em><b>Figure 2.</b> Commanded (dashed) vs. actual (solid) angle of each joint during the sequence in Figure 1. The two curves overlap: largest gap 0.013 rad on the arm joints, 0.04 rad on the gripper during its fast moves.</em>
+</p>
 
 **Formation — questions worked through**
 - How is a robot described for a physics engine? (MJCF nested bodies, joints, geometry; visual vs. collision shapes; units)
