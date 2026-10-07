@@ -10,6 +10,36 @@ The project started from zero in most of these areas. The Formation lists record
 
 ---
 
+### 2026-10-06 to 2026-10-07 · First simulations: single-joint dynamics and a 6-joint pose sequence
+
+**Achieved**
+- First hand-written simulation model: a one-joint pendulum stepped from Python (simulated swing period ≈ 1.2 s).
+- SO-101 model inspected from Python: 8 bodies, 6 joints, 6 position actuators, 31 geometry elements.
+- Simulated 0.5 rad step on one joint: overshoot to 0.627 rad, settled by ≈ 0.43 s, 0.0007 rad residual offset.
+- Tracking error vs. move duration (0.5 rad move): largest gap 0.0047, 0.023, 0.33 rad at 2.0, 0.5, 0.1 s.
+- First choreographed motion: all 6 joints through 7 poses, no floor contact, largest arm-joint gap 0.013 rad.
+- Simulation only; motor parameters are borrowed from another robot model, so control error must come from the real arm.
+
+![Simulation of the public SO-101 model moving all 6 joints through a 7-pose sequence](docs/media/ex4_pose_sequence.gif)
+![Commanded vs. actual angle for each of the 6 joints during the simulated pose sequence](docs/media/ex4_pose_sequence.png)
+
+**Formation — questions worked through**
+- How is a robot described for a physics engine? (MJCF nested bodies, joints, geometry; visual vs. collision shapes; units)
+- How is a simulation driven from Python? (compiled model vs. state, time stepping, actuator targets, live viewer)
+- How are revolute-joint sign conventions defined unambiguously? (joint axis, right-hand rule, parallel axes forming a planar sub-chain)
+- Which physical effects make up a simulated servo joint, and what does each contribute? (gravity load, link inertia, reflected rotor inertia J·N², feedback "spring", damping, torque limit)
+- Why does a position-controlled joint overshoot when its torque saturates? (proportional feedback, bang-bang behaviour, momentum carrying past the target)
+- How does interpolating joint targets trade motion speed against tracking error? (linear interpolation, 50 Hz targets on 500 Hz physics)
+- Why should interpolation track progress through the move rather than add a constant increment? (α as fraction completed 0→1, accumulated rounding, real-clock timing)
+- How is a multi-joint simulation recorded and analysed in Python? (per-step arrays stacked into a time × joint table, view vs. copy, column slicing, stacked plots)
+- How are simulation frames rendered offscreen and compressed for documentation? (fixed camera, GIF export, cropping, frame skipping, palette reduction)
+
+**Not achieved / open**
+- No hardware progress: follower not assembled, leader IDs still unverified.
+- Forward kinematics not started.
+
+---
+
 ### 2026-09-25 to 2026-09-26 · Leader-arm configuration and preparation of the simulation track
 
 **Achieved**
