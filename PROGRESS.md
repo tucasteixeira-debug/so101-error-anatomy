@@ -10,6 +10,39 @@ The project started from zero in most of these areas. The Formation lists record
 
 ---
 
+### 2026-09-25 to 2026-09-26 · Leader-arm configuration and preparation of the simulation track
+
+**Achieved**
+- Leader arm: 6/6 servos matched to joints by gear ratio, checked against the official bill of materials.
+- Leader IDs 1–6 assigned with the single working board; not yet confirmed by a bus scan.
+- Earlier "leader blocked" status corrected: ID assignment needs one board; two are needed only for teleoperation.
+- Public SO-101 simulation model loaded in MuJoCo 3.14 in a test environment; joint names and order match LeRobot.
+- Tip shift per encoder step (0.088°) computed from the model: 0.25–0.54 mm, depending on joint and pose.
+- Stock gripper collision shapes found unable to hold a cube in simulation.
+
+**Formation — questions worked through**
+- On a shared servo bus, which operations need one adapter, and which need two at once? (daisy-chain addressing, ID assignment vs. teleoperation)
+- How do supply voltage and gear reduction set a servo's torque and backdrivability? (three leader gear ratios, 5 V supply on 7.4 V-rated motors)
+- How does joint encoder resolution translate into end-effector position error, and why does it depend on pose? (arc length, Jacobian)
+- Why are forward kinematics and the Jacobian a prerequisite for an error budget, ahead of inverse kinematics?
+- How should simulation, programming, kinematics and physical assembly be sequenced? (combining physical and virtual laboratories)
+- How can control logic be shared between a simulated and a physical arm? (adapter layer, radians vs. degrees, simulated vs. real time)
+- What happens when a command line runs a Python module? (shell search path, interpreter flags, argument passing, conda environments)
+- Through which software layers does one servo command travel? (Python packet builder, serial library, kernel driver, board and servo firmware)
+
+**References for the exercises**
+- Backbone: Georgia Tech ECE 4560 (Maegan Tucker), a course built on the SO-101; used as a reference, not followed step by step.
+- Deliberate differences: simulation first, forward kinematics and sensitivity before inverse kinematics, prediction vs. measurement in every exercise.
+- Supplements: MIT 6.4210 *Robotic Manipulation*, Chapter 3; Northwestern *Modern Robotics* (Lynch & Park).
+- Simulation model: TheRobotStudio's public SO-101 MuJoCo model (SO-ARM100 repository).
+- Learning-design evidence: de Jong, Linn & Zacharia (2013), *Science*, on combining physical and virtual laboratories.
+
+**Not achieved / open**
+- Leader IDs not verified; a second driver board is still needed to run both arms together.
+- Physical assembly not started; deliberately deferred to avoid reassembly and recalibration.
+
+---
+
 ### 2026-09-23 to 2026-09-25 · Public repository, version control and documentation workflow
 
 **Achieved**
